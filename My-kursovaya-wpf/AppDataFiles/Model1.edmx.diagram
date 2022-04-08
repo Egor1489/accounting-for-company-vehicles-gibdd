@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a7391191bce4eec8254fe72ad1c912b" Name="Diagram1">
+        <EntityTypeShape EntityType="gibddModel.sotrudniki" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gibddModel.status" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gibddModel.sysdiagrams" Width="1.5" PointX="9.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gibddModel.transport" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gibddModel.type_of_transport" Width="1.5" PointX="4.125" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="gibddModel.FK_transport_sotrudniki" ManuallyRouted="false" />
+        <AssociationConnector Association="gibddModel.FK_transport_status" ManuallyRouted="false" />
+        <AssociationConnector Association="gibddModel.FK_transport_type_of_transport" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gibddModel.Users" Width="1.5" PointX="8.875" PointY="4.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

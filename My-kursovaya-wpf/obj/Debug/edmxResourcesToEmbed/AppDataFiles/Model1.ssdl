@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище gibddModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sotrudniki">
+    <Key>
+      <PropertyRef Name="id_sotrudnik" />
+    </Key>
+    <Property Name="id_sotrudnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="age" Type="int" />
+    <Property Name="dolzhnost" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="zvanie" Type="varchar" MaxLength="50" />
+    <Property Name="contact" Type="varchar" MaxLength="50" />
+    <Property Name="adres" Type="varchar" MaxLength="50" />
+    <Property Name="otdel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="id_status" />
+    </Key>
+    <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="transport">
+    <Key>
+      <PropertyRef Name="id_auto" />
+    </Key>
+    <Property Name="id_auto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka" Type="varchar" MaxLength="50" />
+    <Property Name="gosNomer" Type="varchar" MaxLength="50" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="id_status" Type="int" />
+    <Property Name="id_sotrudnik" Type="int" />
+    <Property Name="rashod" Type="int" />
+    <Property Name="id_type" Type="int" />
+  </EntityType>
+  <EntityType Name="type_of_transport">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="50" />
+    <Property Name="passwords" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_transport_sotrudniki">
+    <End Role="sotrudniki" Type="Self.sotrudniki" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sotrudniki">
+        <PropertyRef Name="id_sotrudnik" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_sotrudnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_status">
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="id_status" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_type_of_transport">
+    <End Role="type_of_transport" Type="Self.type_of_transport" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_of_transport">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище gibddModelContainer">
+    <EntitySet Name="sotrudniki" EntityType="Self.sotrudniki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transport" EntityType="Self.transport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type_of_transport" EntityType="Self.type_of_transport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_transport_sotrudniki" Association="Self.FK_transport_sotrudniki">
+      <End Role="sotrudniki" EntitySet="sotrudniki" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_status" Association="Self.FK_transport_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_type_of_transport" Association="Self.FK_transport_type_of_transport">
+      <End Role="type_of_transport" EntitySet="type_of_transport" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

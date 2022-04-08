@@ -1,0 +1,52 @@
+﻿<Page x:Class="My_kursovaya_wpf.Pages.PageEditTransport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:My_kursovaya_wpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageEditTransport">
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Марка автомобиля" />
+                <TextBox Name="txtMarka" Style="{StaticResource mainTxt }"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Модель"/>
+                <TextBox Name="txtModel" Style="{StaticResource mainTxt}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Гос. номер"/>
+                <TextBox Name="txtNomer" Style="{StaticResource mainTxt }"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Тип"/>
+                <ComboBox Name="txtType" Style="{StaticResource MainCmbx }"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Статус" />
+                <ComboBox Name="txtStatus" Style="{StaticResource MainCmbx }"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Ответственное лицо"/>
+                <ComboBox Name="txtSotr" Style="{StaticResource MainCmbx }"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource mainTblk}" Text="Расход топлива на 100 км"/>
+                <TextBox Name="txtRashod" Style="{StaticResource mainTxt }"/>
+            </StackPanel>
+            <StackPanel>
+                <Button
+                    Name="btnSave"
+                    Style="{StaticResource mainBtn}"
+                    Content="Сохранить"
+                    Click="btnSave_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

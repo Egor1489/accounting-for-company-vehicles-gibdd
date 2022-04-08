@@ -1,0 +1,111 @@
+﻿<Page x:Class="My_kursovaya_wpf.Pages.PageTransport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:My_kursovaya_wpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageTransport">
+
+    <Grid>
+     
+           
+            <StackPanel Orientation="Vertical">
+                 <TextBox Name="SearchLine" Width="500" Height="20" Margin="20"/>
+            <Expander Header="Сортировка" Height="auto" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Background="Transparent">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="rbSort"
+                                     Content="Марка"
+                                     Style="{StaticResource rbMain}"
+                                     IsMouseCapturedChanged="rbSort_IsMouseCapturedChanged"
+                                     />
+                        <RadioButton Name="rbRSort"
+                                     Content="Тип"
+                                      Style="{StaticResource rbMain}"
+                                    IsMouseCapturedChanged="rbRSort_IsMouseCapturedChanged"/>
+                        <RadioButton Name="rbStatusSort"
+                                     Content="Статус"
+                                      Style="{StaticResource rbMain}"
+                                     IsMouseCapturedChanged="rbStatusSort_IsMouseCapturedChanged"/>
+
+                    </StackPanel>
+
+                    <DataGrid Name="grdSortTransport" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Марка"
+                                        Binding="{Binding marka}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Модель"
+                                        Binding="{Binding model}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Гос. номер"
+                                        Binding="{Binding gosNomer}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Тип транспорта"
+                                        Binding="{Binding type_of_transport.type}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Статус"
+                                        Binding="{Binding status.status1}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Ответственное лицо"
+                                        Binding="{Binding sotrudniki.name}"
+                                        Width="*"/>
+                            <DataGridTextColumn Header="Расход топлива"
+                                        Binding="{Binding rashod}"
+                                        Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Expander>
+            <DataGrid Name="grdTransport" AutoGenerateColumns="False" IsReadOnly="True" 
+                      BorderBrush="Transparent"
+                      Height="500">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Марка"
+                                        Binding="{Binding marka}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Модель"
+                                        Binding="{Binding model}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Гос. номер"
+                                        Binding="{Binding gosNomer}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Тип транспорта"
+                                        Binding="{Binding type_of_transport.type}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Статус"
+                                        Binding="{Binding status.status1}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Ответственное лицо"
+                                        Binding="{Binding sotrudniki.name}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Расход топлива"
+                                        Binding="{Binding rashod}"
+                                        Width="*"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="btnDel"
+                                            Content="-"
+                                            Style="{StaticResource btnGrid}"
+                                            Click="btnDel_Click"
+                                        />
+                                    <Button Name="btnEdit"
+                                            Content="Edit"
+                                            Style="{StaticResource btnGrid}"
+                                            Click="btnEdit_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+       <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
+      </StackPanel>
+        
+    </Grid>
+</Page>

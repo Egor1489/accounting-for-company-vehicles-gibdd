@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gibddModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sotrudniki">
+    <Key>
+      <PropertyRef Name="id_sotrudnik" />
+    </Key>
+    <Property Name="id_sotrudnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="dolzhnost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="zvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="otdel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_sotrudniki" FromRole="sotrudniki" ToRole="transport" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="id_status" />
+    </Key>
+    <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_status" FromRole="status" ToRole="transport" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="transport">
+    <Key>
+      <PropertyRef Name="id_auto" />
+    </Key>
+    <Property Name="id_auto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gosNomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_status" Type="Int32" />
+    <Property Name="id_sotrudnik" Type="Int32" />
+    <Property Name="rashod" Type="Int32" />
+    <Property Name="id_type" Type="Int32" />
+    <NavigationProperty Name="sotrudniki" Relationship="Self.FK_transport_sotrudniki" FromRole="transport" ToRole="sotrudniki" />
+    <NavigationProperty Name="status" Relationship="Self.FK_transport_status" FromRole="transport" ToRole="status" />
+    <NavigationProperty Name="type_of_transport" Relationship="Self.FK_transport_type_of_transport" FromRole="transport" ToRole="type_of_transport" />
+  </EntityType>
+  <EntityType Name="type_of_transport">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_type_of_transport" FromRole="type_of_transport" ToRole="transport" />
+  </EntityType>
+  <Association Name="FK_transport_sotrudniki">
+    <End Role="sotrudniki" Type="Self.sotrudniki" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sotrudniki">
+        <PropertyRef Name="id_sotrudnik" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_sotrudnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_status">
+    <End Role="status" Type="Self.status" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="id_status" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_type_of_transport">
+    <End Role="type_of_transport" Type="Self.type_of_transport" Multiplicity="0..1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_of_transport">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gibddEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sotrudniki" EntityType="Self.sotrudniki" />
+    <EntitySet Name="status" EntityType="Self.status" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="transport" EntityType="Self.transport" />
+    <EntitySet Name="type_of_transport" EntityType="Self.type_of_transport" />
+    <AssociationSet Name="FK_transport_sotrudniki" Association="Self.FK_transport_sotrudniki">
+      <End Role="sotrudniki" EntitySet="sotrudniki" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_status" Association="Self.FK_transport_status">
+      <End Role="status" EntitySet="status" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_type_of_transport" Association="Self.FK_transport_type_of_transport">
+      <End Role="type_of_transport" EntitySet="type_of_transport" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="gibddModel.Users" />
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

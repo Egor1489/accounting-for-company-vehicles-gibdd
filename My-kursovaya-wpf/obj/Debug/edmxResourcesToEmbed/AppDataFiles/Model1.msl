@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище gibddModelContainer" CdmEntityContainer="gibddEntities1">
+    <EntitySetMapping Name="sotrudniki">
+      <EntityTypeMapping TypeName="gibddModel.sotrudniki">
+        <MappingFragment StoreEntitySet="sotrudniki">
+          <ScalarProperty Name="id_sotrudnik" ColumnName="id_sotrudnik" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="dolzhnost" ColumnName="dolzhnost" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="zvanie" ColumnName="zvanie" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="otdel" ColumnName="otdel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="gibddModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="status1" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="gibddModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transport">
+      <EntityTypeMapping TypeName="gibddModel.transport">
+        <MappingFragment StoreEntitySet="transport">
+          <ScalarProperty Name="id_auto" ColumnName="id_auto" />
+          <ScalarProperty Name="marka" ColumnName="marka" />
+          <ScalarProperty Name="gosNomer" ColumnName="gosNomer" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="id_sotrudnik" ColumnName="id_sotrudnik" />
+          <ScalarProperty Name="rashod" ColumnName="rashod" />
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_of_transport">
+      <EntityTypeMapping TypeName="gibddModel.type_of_transport">
+        <MappingFragment StoreEntitySet="type_of_transport">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="gibddModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

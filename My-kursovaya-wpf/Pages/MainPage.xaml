@@ -1,0 +1,50 @@
+﻿<Page x:Class="My_kursovaya_wpf.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:My_kursovaya_wpf.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"  >
+            <StackPanel Orientation="Vertical"> 
+                <Button Name="btnTransport" Content="Транспорт"
+                         Style="{StaticResource mainBtn}" 
+                         Click="BtnTransport_Click"/>
+                <Button Name="btnNewTransport" Content="Новый транспорт"
+                        Style="{StaticResource mainBtn}"
+                        Click="btnNewTransport_Click"/>
+               
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Button Name="btnEmploy" Content="Сотрудники"
+                         Style="{StaticResource mainBtn}"
+                         Click="btnEmploy_Click"/>
+                <Button Name="btnNewEmploy" Content="добавить сотрудника"
+                        Style="{StaticResource mainBtn}" Click="btnNewEmploy_Click"/>
+                
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Orientation="Vertical" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="5">
+            <Button
+                x:Name="btnAbout"
+                Content="for Windows x64-86 V1.1"
+                Width="150"
+                Foreground="DarkGray"
+                Background="White"
+                BorderBrush="White"
+                Click="btnAbout_Click"/>
+           
+
+        </StackPanel>
+       
+    </Grid>
+</Page>
